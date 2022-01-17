@@ -61,7 +61,7 @@ def audio_record(ask = ''):
         return voice_db
 
 
-#define function to save audio record
+#define function for get string of audio file 
 def audio_speak(audio_string):
     audio_string = str(audio_string)
     google_text = gTTS(text = audio_string, lang = 'en')
@@ -75,11 +75,13 @@ def audio_speak(audio_string):
 #generate function class person and assistant
 personObj = person()
 assistantObj = assistant()
-assistantObj.name = 'Navillera'
+assistantObj.name = 'Navy'
 engine = pyttsx3.init()
 
 #define function to response the audio
 def audio_response(voice_db):
+    if audio_exists(['hello Navy']):
+        audio_speak('hello, can i help you Sir?')
 
     if audio_exists(['how old are you']):
         audio_speak('I am 21 years old')
@@ -89,7 +91,7 @@ def audio_response(voice_db):
         audio_speak('Current time is ' + time)
     
     if audio_exists(['are you single']):
-        audio_speak('I am in relationship with wifi')
+        audio_speak('I am in relationship with bruno')
 
     if audio_exists(['play for']):
         song = voice_db.split('for')[-1]
@@ -106,10 +108,14 @@ def audio_response(voice_db):
         url = 'http://www.google.com/search?q=' + search
         webbrowser.get().open(url)
         audio_speak('Hello Bayu, Here is what I found for ' + search + 'on google!')
+    
+    if audio_exists(['thank you']):
+        audio_speak('you are welcome Sir. See you later!')
+        exit()
 
 #define function to record the audio
 while (1):
-    voice_db = audio_record('Recording')
+    voice_db = audio_record()
     print('Succesfully Recorded')
     print('Q:', voice_db)
     audio_response(voice_db)
