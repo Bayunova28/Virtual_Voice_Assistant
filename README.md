@@ -65,7 +65,7 @@ def audio_record(ask = ''):
         return voice_db
 ```
 
-## Setting up audio speech to response the text message 
+## Setting up to save the audio record
 ```python
 def audio_speak(audio_string):
     audio_string = str(audio_string)
