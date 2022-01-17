@@ -61,7 +61,7 @@ def audio_record(ask = ''):
         return voice_db
 
 
-#define function for get string of audio file 
+#define function to save audio record
 def audio_speak(audio_string):
     audio_string = str(audio_string)
     google_text = gTTS(text = audio_string, lang = 'en')
