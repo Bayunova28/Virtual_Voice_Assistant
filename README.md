@@ -20,6 +20,8 @@ pip install pywhatkit
 pip install DateTime
 pip install wikipedia
 pip install pyttsx3
+pip install json
+pip install weathercom
 ```
 
 ## Setting up response of person and assistant
@@ -65,6 +67,16 @@ def audio_record(ask = ''):
         return voice_db
 ```
 
+## Setting up to present the weather
+```python
+def audio_weather(city):
+    weather = weathercom.getCityWeatherDetails(city)
+    humidity = json.loads(weather)['vt1observation']['humidity']
+    temp = json.loads(weather)['vt1observation']['temperature']
+    phrase = json.loads(weather)['vt1observation']['phrase']
+    return humidity, temp, phrase
+```
+
 ## Setting up to save the audio record
 ```python
 def audio_speak(audio_string):
@@ -87,6 +99,14 @@ def audio_response(voice_db):
     if audio_exists(['Ace what time is it']):
         time = datetime.datetime.now().strftime('%I:%M %p')
         audio_speak('Current time is ' + time)
+
+    if audio_exists(['Ace search weather for']):
+        city = audio_record('which city')
+        humidity, temp, phrase = audio_weather(city)
+        audio_speak("currently in " + city + "  temperature is " + str(temp)
+                       + " degree celsius, " + "humidity is " + str(humidity) + " percent and sky is " + phrase)
+        print("currently in " + city + "  temperature is " + str(temp)
+              + "degree celsius, " + "humidity is " + str(humidity) + " percent and sky is " + phrase)
 
     if audio_exists(['Ace play for']):
         song = voice_db.split('for')[-1]
