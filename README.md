@@ -22,6 +22,7 @@ pip install wikipedia
 pip install pyttsx3
 pip install json
 pip install weathercom
+pip install smtplib
 ```
 
 ## Setting up response of person and assistant
