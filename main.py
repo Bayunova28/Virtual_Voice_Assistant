@@ -1,5 +1,4 @@
 #import library
-from async_timeout import sys
 import speech_recognition as sr 
 import playsound  
 from gtts import gTTS  
