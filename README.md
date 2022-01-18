@@ -53,7 +53,6 @@ def audio_record(ask = ''):
             audio_speak(ask)
 
         audio_listen = recognition.listen(source, 5, 5)
-        print('finding at database')
         voice_db = ''
 
         try:
