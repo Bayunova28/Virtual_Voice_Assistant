@@ -75,12 +75,12 @@ def audio_speak(audio_string):
 #generate function class person and assistant
 personObj = person()
 assistantObj = assistant()
-assistantObj.name = 'Navy'
+assistantObj.name = 'Ace'
 engine = pyttsx3.init()
 
 #define function to response the audio
 def audio_response(voice_db):
-    if audio_exists(['hello Navy']):
+    if audio_exists(['hello Ace']):
         audio_speak('hello, can i help you Sir?')
 
     if audio_exists(['how old are you']):
@@ -107,15 +107,15 @@ def audio_response(voice_db):
         search = voice_db.split('for')[-1]
         url = 'http://www.google.com/search?q=' + search
         webbrowser.get().open(url)
-        audio_speak('Hello Bayu, Here is what I found for ' + search + 'on google!')
+        audio_speak('Hello Sir, Here is what I found for ' + search + 'on google!')
     
     if audio_exists(['thank you']):
         audio_speak('you are welcome Sir. See you later!')
-        exit()
+        sys.exit(0)
 
 #define function to record the audio
 while (1):
-    voice_db = audio_record()
+    voice_db = audio_record('Recording')
     print('Succesfully Recorded')
     print('Q:', voice_db)
     audio_response(voice_db)
