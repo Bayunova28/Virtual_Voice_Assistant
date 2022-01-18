@@ -76,6 +76,17 @@ def audio_weather(city):
     return humidity, temp, phrase
 ```
 
+## Setting up to send the email
+```python
+def audio_email(to, content):
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
+    server.starttls()
+    server.login('youremail@gmail.com', 'your-password')
+    server.sendmail('youremail@gmail.com', to, content)
+    server.close()
+```
+
 ## Setting up to save the audio record
 ```python
 def audio_speak(audio_string):
@@ -93,7 +104,7 @@ def audio_speak(audio_string):
 ```python
 def audio_response(voice_db):
     if audio_exists(['tell me your name']):
-        audio_speak('hello, my name is ace. Can I help you, Sir?')
+        audio_speak('hello my name is ace. Can I help you Sir?')
 
     elif audio_exists(['Ace what time is it']):
         time = datetime.datetime.now().strftime('%I:%M %p')
@@ -106,6 +117,29 @@ def audio_response(voice_db):
                     " percent and sky is " + phrase)
         print("currently in " + city + "  temperature is " + str(temp) + "degree celsius, " + "humidity is " + str(humidity) + " percent and sky is " 
               + phrase)
+    
+    elif audio_exists(['Ace show my system']):
+        system_path = "C:\Program Files (x86)\MSI\Dragon Center\Dragon Center.exe"
+        audio_speak('Yes Sir Please wait')
+        os.startfile(system_path)
+
+    elif audio_exists(['Ace play music']):
+        music_dir = "C:\\Users\\bayu\\Music\\music"
+        songs = os.listdir(music_dir)
+        print(songs)    
+        audio_speak('Yes Sir! Enjoy')
+        os.startfile(os.path.join(music_dir, songs[0]))
+    
+    elif audio_exists(['Ace send email for']):
+        try:
+            audio_speak("What should I say? Sir")
+            content = audio_record()
+            to = 'youremail28@gmail.com'    
+            audio_email(to, content)
+            audio_speak('Email has been sent Sir')
+        except Exception as e:
+            print(e)
+            audio_speak('Sorry your friend willi bayu. I am not able to send this email') 
 
     elif audio_exists(['Ace play for']):
         song = voice_db.split('for')[-1]
@@ -121,13 +155,13 @@ def audio_response(voice_db):
         search = voice_db.split('for')[-1]
         url = 'https://search.kompas.com/search/?q=' + search
         webbrowser.get().open(url)
-        audio_speak('Hello Sir, Here is what I found for ' + search + 'on kompas news!')
+        audio_speak('Hello Sir Here is what I found for ' + search + 'on kompas news!')
     
     elif audio_exists(['Ace tell me about']):
         search = voice_db.split('about')[-1]
         url = 'http://www.google.com/search?q=' + search
         webbrowser.get().open(url)
-        audio_speak('Hello Sir, Here is what I found for ' + search + 'on google!')
+        audio_speak('Hello Sir Here is what I found for ' + search + 'on google!')
     
     elif audio_exists(['thank you']):
         audio_speak('you are welcome Sir. See you later!')
