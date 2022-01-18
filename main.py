@@ -88,8 +88,8 @@ def audio_email(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
-    server.login('willibayu28@gmail.com', 'BayuNova281120')
-    server.sendmail('willibayu28@gmail.com', to, content)
+    server.login('youremail@gmail.com', 'your-password')
+    server.sendmail('youremail@gmail.com', to, content)
     server.close()
 
 #generate function class person and assistant
@@ -124,7 +124,7 @@ def audio_response(voice_db):
         try:
             audio_speak("What should I say? Sir")
             content = audio_record()
-            to = 'willibayu28@gmail.com'    
+            to = 'youremail@gmail.com'    
             audio_email(to, content)
             audio_speak('Email has been sent Sir')
         except Exception as e:
