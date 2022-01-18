@@ -83,27 +83,27 @@ def audio_response(voice_db):
     if audio_exists(['hello Ace']):
         audio_speak('hello, can i help you Sir?')
 
-    if audio_exists(['how old are you']):
-        audio_speak('I am 21 years old')
-
-    if audio_exists(['what time is it']):
+    if audio_exists(['Ace what time is it']):
         time = datetime.datetime.now().strftime('%I:%M %p')
         audio_speak('Current time is ' + time)
-    
-    if audio_exists(['are you single']):
-        audio_speak('I am in relationship with bruno')
 
-    if audio_exists(['play for']):
+    if audio_exists(['Ace play for']):
         song = voice_db.split('for')[-1]
         url = 'http://www.youtube.com/results?search_query=' + song
         pywhatkit.playonyt(url)
 
-    if audio_exists(['who is']):
+    if audio_exists(['Ace who is']):
         person = voice_db.split('for')[-1]
         info = wikipedia.summary(person, 1)
         audio_speak(info)
     
-    if audio_exists(['search for']):
+    if audio_exists(['Ace search news for']):
+        search = voice_db.split('for')[-1]
+        url = 'https://search.kompas.com/search/?q=' + search
+        webbrowser.get().open(url)
+        audio_speak('Hello Sir, Here is what I found for ' + search + 'on kompas news!')
+
+    if audio_exists(['Ace search for']):
         search = voice_db.split('for')[-1]
         url = 'http://www.google.com/search?q=' + search
         webbrowser.get().open(url)
