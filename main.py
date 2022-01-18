@@ -9,6 +9,8 @@ import datetime
 import webbrowser
 import os   
 import wikipedia
+import weathercom
+import json
 import pyttsx3
 
 #define function class person
@@ -31,6 +33,14 @@ def audio_exists(terms):
         if term in voice_db:
             return True
 
+#define function to present the weather
+def audio_weather(city):
+    weather = weathercom.getCityWeatherDetails(city)
+    humidity = json.loads(weather)['vt1observation']['humidity']
+    temp = json.loads(weather)['vt1observation']['temperature']
+    phrase = json.loads(weather)['vt1observation']['phrase']
+    return humidity, temp, phrase
+
 #define function engine audio speak
 def audio_speak(text):
     txt = str(text)
@@ -41,7 +51,7 @@ def audio_speak(text):
 recognition = sr.Recognizer()
 
 #define function for listen audio to convert text
-def audio_record(ask = ''):
+def audio_record(ask = False):
     with sr.Microphone() as source:
         if ask:
             audio_speak(ask)
@@ -86,6 +96,14 @@ def audio_response(voice_db):
     if audio_exists(['Ace what time is it']):
         time = datetime.datetime.now().strftime('%I:%M %p')
         audio_speak('Current time is ' + time)
+
+    if audio_exists(['Ace search weather for']):
+        city = audio_record('which city')
+        humidity, temp, phrase = audio_weather(city)
+        audio_speak("currently in " + city + "  temperature is " + str(temp)
+                       + " degree celsius, " + "humidity is " + str(humidity) + " percent and sky is " + phrase)
+        print("currently in " + city + "  temperature is " + str(temp)
+              + "degree celsius, " + "humidity is " + str(humidity) + " percent and sky is " + phrase)
 
     if audio_exists(['Ace play for']):
         song = voice_db.split('for')[-1]
