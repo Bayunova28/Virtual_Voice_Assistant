@@ -1,4 +1,4 @@
-# Voice Assistant (Ace)
+# Virtual Assistant (Ace)
 <img src="https://github.com/Bayunova28/Navillera/blob/master/Benefits-of-Having-a-Virtual-Assistant.jpg" width="1000" height="450">
 
 Virtual assistants are intelligent software agents that their performance is attributed to voice command. Some virtual assistants use synthesized voices to interpret the voice of 
