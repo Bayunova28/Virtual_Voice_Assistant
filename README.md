@@ -1,4 +1,4 @@
-# Virtual Assistant (Navy)
+# Virtual Assistant (Ace)
 <img src="https://github.com/Bayunova28/Navillera/blob/master/Benefits-of-Having-a-Virtual-Assistant.jpg" width="1000" height="450">
 
 Virtual assistants are intelligent software agents that their performance is attributed to voice command. Some virtual assistants use synthesized voices to interpret the voice of 
@@ -81,7 +81,7 @@ def audio_speak(audio_string):
 ## Setting up audio response the message
 ```python
 def audio_response(voice_db):
-    if audio_exists(['hello Navy']):
+    if audio_exists(['hello Ace']):
         audio_speak('hello, can i help you Sir?')
 
     if audio_exists(['how old are you']):
@@ -108,9 +108,9 @@ def audio_response(voice_db):
         search = voice_db.split('for')[-1]
         url = 'http://www.google.com/search?q=' + search
         webbrowser.get().open(url)
-        audio_speak('Hello Bayu, Here is what I found for ' + search + 'on google!')
+        audio_speak('Hello Sir, Here is what I found for ' + search + 'on google!')
     
     if audio_exists(['thank you']):
         audio_speak('you are welcome Sir. See you later!')
-        exit()
+        sys.exit(0)
 ```
