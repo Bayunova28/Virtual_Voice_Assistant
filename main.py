@@ -1,4 +1,5 @@
 #import library
+import sys
 import speech_recognition as sr 
 import playsound  
 from gtts import gTTS  
@@ -11,7 +12,6 @@ import os
 import wikipedia
 import weathercom
 import json
-import sys
 import pyttsx3
 
 #define function class person
@@ -94,11 +94,11 @@ def audio_response(voice_db):
     if audio_exists(['tell me your name']):
         audio_speak('hello, my name is ace. Can I help you, Sir?')
 
-    if audio_exists(['Ace what time is it']):
+    elif audio_exists(['Ace what time is it']):
         time = datetime.datetime.now().strftime('%I:%M %p')
         audio_speak('Current time is ' + time)
 
-    if audio_exists(['Ace search weather for']):
+    elif audio_exists(['Ace search weather for']):
         city = audio_record('which city')
         humidity, temp, phrase = audio_weather(city)
         audio_speak("currently in " + city + "  temperature is " + str(temp)
@@ -106,29 +106,29 @@ def audio_response(voice_db):
         print("currently in " + city + "  temperature is " + str(temp)
               + "degree celsius, " + "humidity is " + str(humidity) + " percent and sky is " + phrase)
 
-    if audio_exists(['Ace play for']):
+    elif audio_exists(['Ace play for']):
         song = voice_db.split('for')[-1]
         url = 'http://www.youtube.com/results?search_query=' + song
         pywhatkit.playonyt(url)
 
-    if audio_exists(['Ace who is']):
+    elif audio_exists(['Ace who is']):
         person = voice_db.split('for')[-1]
         info = wikipedia.summary(person, 1)
         audio_speak(info)
     
-    if audio_exists(['Ace search news for']):
+    elif audio_exists(['Ace search news for']):
         search = voice_db.split('for')[-1]
         url = 'https://search.kompas.com/search/?q=' + search
         webbrowser.get().open(url)
         audio_speak('Hello Sir, Here is what I found for ' + search + 'on kompas news!')
     
-    if audio_exists(['Ace search for']):
+    elif audio_exists(['Ace search for']):
         search = voice_db.split('for')[-1]
         url = 'http://www.google.com/search?q=' + search
         webbrowser.get().open(url)
         audio_speak('Hello Sir, Here is what I found for ' + search + 'on google!')
     
-    if audio_exists(['thank you']):
+    elif audio_exists(['thank you']):
         audio_speak('you are welcome Sir. See you later!')
         sys.exit(0)
 
