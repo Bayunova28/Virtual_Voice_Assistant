@@ -123,8 +123,8 @@ def audio_response(voice_db):
         webbrowser.get().open(url)
         audio_speak('Hello Sir, Here is what I found for ' + search + 'on kompas news!')
     
-    elif audio_exists(['Ace search for']):
-        search = voice_db.split('for')[-1]
+    elif audio_exists(['Ace tell me about']):
+        search = voice_db.split('about')[-1]
         url = 'http://www.google.com/search?q=' + search
         webbrowser.get().open(url)
         audio_speak('Hello Sir, Here is what I found for ' + search + 'on google!')
