@@ -93,8 +93,8 @@ def audio_speak(audio_string):
 ## Setting up audio response the message
 ```python
 def audio_response(voice_db):
-    if audio_exists(['hello Ace']):
-        audio_speak('hello, can i help you Sir?')
+    if audio_exists(['tell me your name']):
+        audio_speak('hello, my name is ace. Can I help you, Sir?')
 
     if audio_exists(['Ace what time is it']):
         time = datetime.datetime.now().strftime('%I:%M %p')
@@ -123,7 +123,7 @@ def audio_response(voice_db):
         url = 'https://search.kompas.com/search/?q=' + search
         webbrowser.get().open(url)
         audio_speak('Hello Sir, Here is what I found for ' + search + 'on kompas news!')
-
+    
     if audio_exists(['Ace search for']):
         search = voice_db.split('for')[-1]
         url = 'http://www.google.com/search?q=' + search
