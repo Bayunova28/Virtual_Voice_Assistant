@@ -121,15 +121,8 @@ def audio_response(voice_db):
     
     elif audio_exists(['Ace show my system']):
         system_path = "C:\Program Files (x86)\MSI\Dragon Center\Dragon Center.exe"
-        audio_speak('Yes Sir Please wait')
+        audio_speak('starting monitoring system')
         os.startfile(system_path)
-
-    elif audio_exists(['Ace play music']):
-        music_dir = "C:\\Users\\bayu\\Music\\music"
-        songs = os.listdir(music_dir)
-        print(songs)    
-        audio_speak('Yes Sir! Enjoy')
-        os.startfile(os.path.join(music_dir, songs[0]))
     
     elif audio_exists(['Ace send email for']):
         try:
@@ -141,25 +134,31 @@ def audio_response(voice_db):
         except Exception as e:
             print(e)
             audio_speak('Sorry your friend willi bayu. I am not able to send this email') 
+    
+    elif audio_exists(['Ace play music']):
+        music_dir = "C:\\Users\\bayu\\Music\\music"
+        songs = os.listdir(music_dir)
+        print(songs)    
+        audio_speak('Yes Sir! please wait')
+        os.startfile(os.path.join(music_dir, songs[0]))
 
-    elif audio_exists(['Ace play for']):
-        song = voice_db.split('for')[-1]
-        url = 'http://www.youtube.com/results?search_query=' + song
-        pywhatkit.playonyt(url)
+    elif audio_exists(['Ace open Discord']):
+        discord = "C:\\Users\\bayu\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Discord Inc\\Discord.lnk"
+        audio_speak('starting discord app')
+        os.startfile(discord)
 
-    elif audio_exists(['Ace who is']):
+    elif audio_exists(['Ace open Spotify']):
+        spotify = "C:\\Users\\bayu\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Spotify.lnk"
+        audio_speak('starting spotify app')
+        os.startfile(spotify)
+
+    elif audio_exists(['Ace tell me about']):
         person = voice_db.split('for')[-1]
         info = wikipedia.summary(person, 1)
         audio_speak(info)
     
-    elif audio_exists(['Ace search news for']):
+    elif audio_exists(['Ace search for']):
         search = voice_db.split('for')[-1]
-        url = 'https://search.kompas.com/search/?q=' + search
-        webbrowser.get().open(url)
-        audio_speak('Hello Sir Here is what I found for ' + search + 'on kompas news!')
-    
-    elif audio_exists(['Ace tell me about']):
-        search = voice_db.split('about')[-1]
         url = 'http://www.google.com/search?q=' + search
         webbrowser.get().open(url)
         audio_speak('Hello Sir Here is what I found for ' + search + 'on google!')
