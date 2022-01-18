@@ -132,7 +132,7 @@ def audio_response(voice_db):
         try:
             audio_speak("What should I say? Sir")
             content = audio_record()
-            to = 'youremail28@gmail.com'    
+            to = 'youremail@gmail.com'    
             audio_email(to, content)
             audio_speak('Email has been sent Sir')
         except Exception as e:
