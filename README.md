@@ -102,10 +102,10 @@ def audio_response(voice_db):
     elif audio_exists(['Ace search weather for']):
         city = audio_record('which city')
         humidity, temp, phrase = audio_weather(city)
-        audio_speak("currently in " + city + "  temperature is " + str(temp)
-                       + " degree celsius, " + "humidity is " + str(humidity) + " percent and sky is " + phrase)
-        print("currently in " + city + "  temperature is " + str(temp)
-              + "degree celsius, " + "humidity is " + str(humidity) + " percent and sky is " + phrase)
+        audio_speak("currently in " + city + "  temperature is " + str(temp) + " degree celsius, " + "humidity is " + str(humidity) + 
+                    " percent and sky is " + phrase)
+        print("currently in " + city + "  temperature is " + str(temp) + "degree celsius, " + "humidity is " + str(humidity) + " percent and sky is " 
+              + phrase)
 
     elif audio_exists(['Ace play for']):
         song = voice_db.split('for')[-1]
