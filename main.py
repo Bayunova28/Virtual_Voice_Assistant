@@ -58,7 +58,6 @@ def audio_record(ask = False):
             audio_speak(ask)
 
         audio_listen = recognition.listen(source, 5, 5)
-        print('finding at database')
         voice_db = ''
 
         try:
@@ -134,7 +133,6 @@ def audio_response(voice_db):
 
 #define function to record the audio
 while (1):
-    voice_db = audio_record('Recording')
-    print('Succesfully Recorded')
+    voice_db = audio_record('Recording...')
     print('Q:', voice_db)
     audio_response(voice_db)
