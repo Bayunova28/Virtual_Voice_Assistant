@@ -11,6 +11,7 @@ import os
 import wikipedia
 import weathercom
 import json
+import sys
 import pyttsx3
 
 #define function class person
