@@ -10,7 +10,7 @@ the hiring of virtual assistants. Any business owner can get the stress from the
 free up time and relieve stress, an assistant is needed who will help in a difficult situation.
 
 ## Weather Mapping API
-This project using [weather mapping API](https://openweathermap.org/api). Before you deploy this program, you must [register account](https://home.openweathermap.org/users/sign_in) for got the API. After that, you can choose these API :
+This project using [weather mapping API](https://openweathermap.org/api). Before you build this program, you must [register account](https://home.openweathermap.org/users/sign_in) for got the API. After that, you can choose these API :
 ```
 api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 ```
