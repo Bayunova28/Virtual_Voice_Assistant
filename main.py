@@ -123,7 +123,7 @@ def audio_response(voice_db):
             print('Currently in ' + city_name + ' temperature is ' + str(temp) + ' degrees celcius' + '\n humidity in percentage is ' + 
                   str(humidity) + ' percent' + '\n the condition is ' + str(description))
 
-    if audio_exists(['Ace what time is it']):
+    elif audio_exists(['Ace what time is it']):
         time = datetime.datetime.now().strftime('%I:%M %p')
         audio_speak('Current time is ' + time)
     
@@ -160,9 +160,9 @@ def audio_response(voice_db):
         audio_speak('starting spotify app')
         os.startfile(spotify)
 
-    elif audio_exists(['Ace tell me about']):
+    elif audio_exists(['Ace who is']):
         person = voice_db.split('for')[-1]
-        info = wikipedia.summary(person, 1)
+        info = wikipedia.summary(person, sentences = 5)
         audio_speak(info)
     
     elif audio_exists(['Ace search for']):
@@ -180,6 +180,7 @@ audio_greet()
 
 #define function to record the audio
 while (1):
+    time.sleep(2)
     voice_db = audio_record('Recording...')
     print('Q:', voice_db)
     audio_response(voice_db)
