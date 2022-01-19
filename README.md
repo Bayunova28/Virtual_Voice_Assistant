@@ -21,6 +21,24 @@ api.openweathermap.org/data/2.5/weather?q={city name},{state code}&appid={API ke
 api.openweathermap.org/data/2.5/weather?q={city name},{state code},{country code}&appid={API key}
 ```
 
+## News API
+This project also using [news API](https://newsapi.org/). You must register account and [get API key](https://newsapi.org/register). After that you can choose some news from News API. Here are some news API:
+```
+https://newsapi.org/v2/everything?q=apple&from=2022-01-18&to=2022-01-18&sortBy=popularity&apiKey=
+```
+```
+https://newsapi.org/v2/everything?q=tesla&from=2021-12-19&sortBy=publishedAt&apiKey=
+```
+```
+https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=
+```
+```
+https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=
+```
+```
+https://newsapi.org/v2/everything?domains=wsj.com&apiKey=
+```
+
 ## Control accesss to less secure apps
 If you ran the program and got a gmail SMTP authentication error but your username or password was correct, check your problem [here](https://support.google.com/accounts/answer/6010255). This is step if you're using smtp.gmail.com :
 * Turn on the less secure apps in [recent security activity](https://myaccount.google.com/u/1/security?utm_source=OGB&utm_medium=act)
@@ -109,6 +127,19 @@ def audio_email(to, content):
     server.close()
 ```
 
+## Setting up to present about the news
+```python
+def audio_news():
+    api_key = 'your-api-key'
+    news_url = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=' + api_key
+    news_json = requests.get(news_url).json()
+    news = []
+
+    for i in range(5):
+        news.append('Headline ' + str(i + 1) + ', ' + news_json['articles'][i]['title'] + '.')
+    return news
+```
+
 ## Setting up to save the audio record
 ```python
 def audio_speak(audio_string):
@@ -144,7 +175,13 @@ def audio_response(voice_db):
                         str(humidity) + ' percent' + '\n the condition is ' + str(description))
             print('Currently in ' + city_name + ' temperature is ' + str(temp) + ' degrees celcius' + '\n humidity in percentage is ' + 
                   str(humidity) + ' percent' + '\n the condition is ' + str(description))
-
+                  
+    elif audio_exists(['Nova current news']):
+        arr_news = audio_news()
+        for i in range(len(arr_news)):
+            audio_speak(arr_news[i])
+            print(arr_news[i])
+            
     elif audio_exists(['Nova what time is it']):
         time = datetime.datetime.now().strftime('%I:%M %p')
         audio_speak('Current time is ' + time)
