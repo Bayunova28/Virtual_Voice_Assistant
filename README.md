@@ -83,6 +83,19 @@ def audio_weather(city):
     return humidity, temp, phrase
 ```
 
+## Setting up start the conversation
+```python
+def audio_greet():
+    hour = datetime.datetime.now().hour
+    if hour >= 6 and hour < 12:
+        audio_speak('Good morning, Sir!')
+    elif hour >= 12 and hour < 18:
+        audio_speak('Good afternoon, Sir!')
+    elif hour >= 19 and hour < 24:
+        audio_speak('Good evening, Sir!')
+    audio_speak('Ace at your service. Please tell me how can i help you, Sir?')
+```
+
 ## Setting up to send the email
 ```python
 def audio_email(to, content):
@@ -110,20 +123,29 @@ def audio_speak(audio_string):
 ## Setting up audio response the message
 ```python
 def audio_response(voice_db):
-    if audio_exists(['tell me your name']):
-        audio_speak('hello my name is ace. Can I help you Sir?')
+    if audio_exists(['Ace search weather for']):
+        api_key = 'your-api-key'
+        base_url = 'https://api.openweathermap.org/data/2.5/weather?'
+        audio_speak('Where is the city?')
+        city_name = audio_record()
+        complete_url = base_url + "appid=" + api_key + "&q=" + city_name
+        response = requests.get(complete_url)
+        x = response.json()
 
-    elif audio_exists(['Ace what time is it']):
+        if x['cod'] != '404':
+            y = x['main']
+            temp = round(y['temp'] - 273)
+            humidity = y['humidity']
+            z = x['weather']
+            description = z[0]['description']
+            audio_speak('Currently in ' + city_name + ' temperature is ' + str(temp) + ' degrees celcius' + '\n humidity in percentage is ' + 
+                        str(humidity) + ' percent' + '\n the condition is ' + str(description))
+            print('Currently in ' + city_name + ' temperature is ' + str(temp) + ' degrees celcius' + '\n humidity in percentage is ' + 
+                  str(humidity) + ' percent' + '\n the condition is ' + str(description))
+
+    if audio_exists(['Ace what time is it']):
         time = datetime.datetime.now().strftime('%I:%M %p')
         audio_speak('Current time is ' + time)
-
-    elif audio_exists(['Ace search weather for']):
-        city = audio_record('which city')
-        humidity, temp, phrase = audio_weather(city)
-        audio_speak("currently in " + city + "  temperature is " + str(temp) + " degree celsius, " + "humidity is " + str(humidity) + 
-                    " percent and sky is " + phrase)
-        print("currently in " + city + "  temperature is " + str(temp) + "degree celsius, " + "humidity is " + str(humidity) + " percent and sky is " 
-              + phrase)
     
     elif audio_exists(['Ace show my system']):
         system_path = "C:\Program Files (x86)\MSI\Dragon Center\Dragon Center.exe"
@@ -147,6 +169,12 @@ def audio_response(voice_db):
         print(songs)    
         audio_speak('Yes Sir! please wait')
         os.startfile(os.path.join(music_dir, songs[0]))
+    
+    elif audio_exists(['Ace where is']):
+        data = voice_db.split('for')[-1]
+        location_url = "https://www.google.com/maps/place/" + str(data[2])
+        webbrowser.get().open(location_url)
+        audio_speak("Hold on Dante, I will show you where " + data[2] + " is.")
 
     elif audio_exists(['Ace open Discord']):
         discord = "C:\\Users\\bayu\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Discord Inc\\Discord.lnk"
