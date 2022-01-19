@@ -151,7 +151,14 @@ def audio_response(voice_db):
         print(songs)    
         audio_speak('Yes Sir! please wait')
         os.startfile(os.path.join(music_dir, songs[0]))
-
+    
+    elif audio_exists(['Nova play movie']):
+        movie_dir = "C:\\Users\\bayu\\Videos\\Captures\\movie"
+        movies = os.listdir(movie_dir)
+        print(movies)
+        audio_speak('Yes Sir! please wait')
+        os.startfile(os.path.join(movie_dir, movies[0]))
+        
     elif audio_exists(['Nova open Discord']):
         discord = "C:\\Users\\bayu\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Discord Inc\\Discord.lnk"
         audio_speak('starting discord app')
