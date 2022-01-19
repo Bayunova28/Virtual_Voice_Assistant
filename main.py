@@ -96,6 +96,17 @@ def audio_greet():
         audio_speak('Good evening, Sir!')
     audio_speak('Nova at your service. Please tell me how can i help you Sir!')
 
+#define function to present about news
+def audio_news():
+    api_key = 'your-api-key'
+    news_url = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=' + api_key
+    news_json = requests.get(news_url).json()
+    news = []
+
+    for i in range(5):
+        news.append('Headline ' + str(i + 1) + ', ' + news_json['articles'][i]['title'] + '.')
+    return news
+
 #generate function class person and assistant
 personObj = person()
 assistantObj = assistant()
@@ -123,7 +134,13 @@ def audio_response(voice_db):
                         str(humidity) + ' percent' + '\n the condition is ' + str(description))
             print('Currently in ' + city_name + ' temperature is ' + str(temp) + ' degrees celcius' + '\n humidity in percentage is ' + 
                   str(humidity) + ' percent' + '\n the condition is ' + str(description))
-
+    
+    elif audio_exists(['Nova current news']):
+        arr_news = audio_news()
+        for i in range(len(arr_news)):
+            audio_speak(arr_news[i])
+            print(arr_news[i])
+            
     elif audio_exists(['Nova what time is it']):
         time = datetime.datetime.now().strftime('%I:%M %p')
         audio_speak('Current time is ' + time)
