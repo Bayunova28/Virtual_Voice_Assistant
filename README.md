@@ -11,7 +11,7 @@ free up time and relieve stress, an assistant is needed who will help in a diffi
 
 ## Control accesss to less secure apps
 If you ran the program and got a gmail SMTP authentication error but your username or password was correct, check your problem [here](https://support.google.com/accounts/answer/6010255). This is step if you're using smtp.gmail.com :
-* Turn on the less secure apps in [recent security activity](https://myaccount.google.com/u/0/notifications?origin=3)
+* Turn on the less secure apps in [recent security activity](https://myaccount.google.com/u/1/security?utm_source=OGB&utm_medium=act)
 * You'll get the security mail in your gmail inbox, Click 'Yes,it's me' in that.
 * Now run your code again.
 
