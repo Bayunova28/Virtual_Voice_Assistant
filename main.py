@@ -10,7 +10,6 @@ import datetime
 import webbrowser
 import os   
 import wikipedia
-import weathercom
 import json
 import pyttsx3
 import smtplib
