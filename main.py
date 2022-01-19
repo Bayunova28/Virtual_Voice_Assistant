@@ -123,7 +123,6 @@ def audio_response(voice_db):
                         str(humidity) + ' percent' + '\n the condition is ' + str(description))
             print('Currently in ' + city_name + ' temperature is ' + str(temp) + ' degrees celcius' + '\n humidity in percentage is ' + 
                   str(humidity) + ' percent' + '\n the condition is ' + str(description))
-            return
 
     elif audio_exists(['Nova what time is it']):
         time = datetime.datetime.now().strftime('%I:%M %p')
