@@ -1,4 +1,4 @@
-# Virtual Voice Assistant (Ace)
+# Virtual Voice Assistant (NOVA)
 <img src="https://github.com/Bayunova28/Navillera/blob/master/Benefits-of-Having-a-Virtual-Assistant.jpg" width="1000" height="450">
 
 Virtual assistants are intelligent software agents that their performance is attributed to voice command. Some virtual assistants use synthesized voices to interpret the voice of 
@@ -125,7 +125,7 @@ def audio_speak(audio_string):
 ## Setting up audio response the message
 ```python
 def audio_response(voice_db):
-    if audio_exists(['Ace search weather for']):
+    if audio_exists(['Nova search weather for']):
         api_key = 'your-api-key'
         base_url = 'https://api.openweathermap.org/data/2.5/weather?'
         audio_speak('Where is the city?')
@@ -145,16 +145,16 @@ def audio_response(voice_db):
             print('Currently in ' + city_name + ' temperature is ' + str(temp) + ' degrees celcius' + '\n humidity in percentage is ' + 
                   str(humidity) + ' percent' + '\n the condition is ' + str(description))
 
-    elif audio_exists(['Ace what time is it']):
+    elif audio_exists(['Nova what time is it']):
         time = datetime.datetime.now().strftime('%I:%M %p')
         audio_speak('Current time is ' + time)
     
-    elif audio_exists(['Ace show my system']):
+    elif audio_exists(['Nova show my system']):
         system_path = "C:\Program Files (x86)\MSI\Dragon Center\Dragon Center.exe"
         audio_speak('starting monitoring system')
         os.startfile(system_path)
     
-    elif audio_exists(['Ace send email for']):
+    elif audio_exists(['Nova send email for']):
         try:
             audio_speak("What should I say? Sir")
             content = audio_record()
@@ -165,29 +165,29 @@ def audio_response(voice_db):
             print(e)
             audio_speak('Sorry your friend willi bayu. I am not able to send this email') 
     
-    elif audio_exists(['Ace play music']):
+    elif audio_exists(['Nova play music']):
         music_dir = "C:\\Users\\bayu\\Music\\music"
         songs = os.listdir(music_dir)
         print(songs)    
         audio_speak('Yes Sir! please wait')
         os.startfile(os.path.join(music_dir, songs[0]))
 
-    elif audio_exists(['Ace open Discord']):
+    elif audio_exists(['Nova open Discord']):
         discord = "C:\\Users\\bayu\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Discord Inc\\Discord.lnk"
         audio_speak('starting discord app')
         os.startfile(discord)
 
-    elif audio_exists(['Ace open Spotify']):
+    elif audio_exists(['Nova open Spotify']):
         spotify = "C:\\Users\\bayu\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Spotify.lnk"
         audio_speak('starting spotify app')
         os.startfile(spotify)
 
-    elif audio_exists(['Ace who is']):
+    elif audio_exists(['Nova who is']):
         person = voice_db.split('for')[-1]
         info = wikipedia.summary(person, sentences = 5)
         audio_speak(info)
     
-    elif audio_exists(['Ace search for']):
+    elif audio_exists(['Nova search for']):
         search = voice_db.split('for')[-1]
         url = 'http://www.google.com/search?q=' + search
         webbrowser.get().open(url)
