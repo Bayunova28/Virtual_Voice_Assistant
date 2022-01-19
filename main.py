@@ -149,12 +149,6 @@ def audio_response(voice_db):
         print(songs)    
         audio_speak('Yes Sir! please wait')
         os.startfile(os.path.join(music_dir, songs[0]))
-    
-    elif audio_exists(['Ace where is']):
-        data = voice_db.split('for')[-1]
-        location_url = "https://www.google.com/maps/place/" + str(data[2])
-        webbrowser.get().open(location_url)
-        audio_speak("Hold on Dante, I will show you where " + data[2] + " is.")
 
     elif audio_exists(['Ace open Discord']):
         discord = "C:\\Users\\bayu\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Discord Inc\\Discord.lnk"
