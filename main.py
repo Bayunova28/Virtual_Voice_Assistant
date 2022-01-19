@@ -1,5 +1,6 @@
 #import library
 import sys
+import time
 import speech_recognition as sr 
 import playsound  
 from gtts import gTTS  
@@ -87,13 +88,13 @@ def audio_email(to, content):
 #define function to start the conversation
 def audio_greet():
     hour = datetime.datetime.now().hour
-    if hour >= 6 and hour < 12:
+    if hour >= 1 and hour < 12:
         audio_speak('Good morning, Sir!')
     elif hour >= 12 and hour < 18:
         audio_speak('Good afternoon, Sir!')
-    elif hour >= 19 and hour < 24:
+    elif hour >= 18 and hour < 24:
         audio_speak('Good evening, Sir!')
-    audio_speak('Ace at your service. Please tell me how can i help you, Sir?')
+    audio_speak('Nova at your service. Please tell me how can i help you Sir?')
 
 #generate function class person and assistant
 personObj = person()
@@ -122,6 +123,7 @@ def audio_response(voice_db):
                         str(humidity) + ' percent' + '\n the condition is ' + str(description))
             print('Currently in ' + city_name + ' temperature is ' + str(temp) + ' degrees celcius' + '\n humidity in percentage is ' + 
                   str(humidity) + ' percent' + '\n the condition is ' + str(description))
+            return
 
     elif audio_exists(['Nova what time is it']):
         time = datetime.datetime.now().strftime('%I:%M %p')
@@ -134,7 +136,7 @@ def audio_response(voice_db):
     
     elif audio_exists(['Nova send email for']):
         try:
-            audio_speak("What should I say? Sir")
+            audio_speak('What should I say Sir?')
             content = audio_record()
             to = 'youremail@gmail.com'    
             audio_email(to, content)
