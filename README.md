@@ -9,6 +9,12 @@ assistants help in the office activities in the sense that some hundreds of e-ma
 the hiring of virtual assistants. Any business owner can get the stress from their daily activities. There are many administrative tasks that could be solved during the day to 
 free up time and relieve stress, an assistant is needed who will help in a difficult situation.
 
+## Control accesss to less secure apps
+If you ran the program and got an SMTP authentication error but your username or password was correct, check your problem [here](https://support.google.com/accounts/answer/6010255). This is step if you're using smtp.gmail.com :
+* Turn on the less secure apps in [recent security activity](https://myaccount.google.com/u/0/notifications?origin=3)
+* You'll get the security mail in your gmail inbox, Click 'Yes,it's me' in that.
+* Now run your code again.
+
 ## Install Package
 ```python
 pip install SpeechRecognition
