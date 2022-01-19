@@ -9,6 +9,18 @@ assistants help in the office activities in the sense that some hundreds of e-ma
 the hiring of virtual assistants. Any business owner can get the stress from their daily activities. There are many administrative tasks that could be solved during the day to 
 free up time and relieve stress, an assistant is needed who will help in a difficult situation.
 
+## Weather Mapping API
+This project using [weather mapping API](https://openweathermap.org/api). Before you deploy this program, you must [register account](https://home.openweathermap.org/users/sign_in) for got the API. After that, you can choose these API :
+```
+api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+```
+```
+api.openweathermap.org/data/2.5/weather?q={city name},{state code}&appid={API key}
+```
+```
+api.openweathermap.org/data/2.5/weather?q={city name},{state code},{country code}&appid={API key}
+```
+
 ## Control accesss to less secure apps
 If you ran the program and got a gmail SMTP authentication error but your username or password was correct, check your problem [here](https://support.google.com/accounts/answer/6010255). This is step if you're using smtp.gmail.com :
 * Turn on the less secure apps in [recent security activity](https://myaccount.google.com/u/1/security?utm_source=OGB&utm_medium=act)
@@ -27,7 +39,7 @@ pip install DateTime
 pip install wikipedia
 pip install pyttsx3
 pip install json
-pip install weathercom
+pip install requests
 pip install smtplib
 ```
 
