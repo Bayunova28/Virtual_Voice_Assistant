@@ -182,9 +182,9 @@ def audio_response(voice_db):
         audio_speak('starting spotify app')
         os.startfile(spotify)
 
-    elif audio_exists(['Ace tell me about']):
+    elif audio_exists(['Ace who is']):
         person = voice_db.split('for')[-1]
-        info = wikipedia.summary(person, 1)
+        info = wikipedia.summary(person, sentences = 5)
         audio_speak(info)
     
     elif audio_exists(['Ace search for']):
@@ -196,4 +196,5 @@ def audio_response(voice_db):
     elif audio_exists(['thank you']):
         audio_speak('you are welcome Sir. See you later!')
         sys.exit(0)
+
 ```
