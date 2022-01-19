@@ -85,16 +85,6 @@ def audio_record(ask = ''):
         return voice_db
 ```
 
-## Setting up to present the weather
-```python
-def audio_weather(city):
-    weather = weathercom.getCityWeatherDetails(city)
-    humidity = json.loads(weather)['vt1observation']['humidity']
-    temp = json.loads(weather)['vt1observation']['temperature']
-    phrase = json.loads(weather)['vt1observation']['phrase']
-    return humidity, temp, phrase
-```
-
 ## Setting up start the conversation
 ```python
 def audio_greet():
