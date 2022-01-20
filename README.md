@@ -186,6 +186,13 @@ def audio_response(voice_db):
         time = datetime.datetime.now().strftime('%I:%M %p')
         audio_speak('Current time is ' + time)
     
+    elif audio_exists(['Nova tell me the location']):
+        audio_speak('What is the location?')
+        location = audio_record()
+        url = 'https://google.nl/maps/place/' + location + '/&amp;'
+        webbrowser.get().open(url)
+        audio_speak('Here is the location ' + location)
+    
     elif audio_exists(['Nova show my system']):
         system_path = "C:\Program Files (x86)\MSI\Dragon Center\Dragon Center.exe"
         audio_speak('starting monitoring system')
