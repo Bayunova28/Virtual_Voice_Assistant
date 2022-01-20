@@ -113,7 +113,7 @@ def audio_greet():
         audio_speak('Good afternoon!')
     elif hour >= 18 and hour < 24:
         audio_speak('Good evening!')
-    audio_speak('Nova at your service. Please tell me how can i help you Sir!')
+    audio_speak('Nova is online. Please tell me how can i help you Sir!')
 ```
 
 ## Setting up to send the email
