@@ -108,11 +108,11 @@ def audio_record(ask = ''):
 def audio_greet():
     hour = datetime.datetime.now().hour
     if hour >= 1 and hour < 12:
-        audio_speak('Good morning, Sir!')
+        audio_speak('Good morning!')
     elif hour >= 12 and hour < 18:
-        audio_speak('Good afternoon, Sir!')
+        audio_speak('Good afternoon!')
     elif hour >= 18 and hour < 24:
-        audio_speak('Good evening, Sir!')
+        audio_speak('Good evening!')
     audio_speak('Nova at your service. Please tell me how can i help you Sir!')
 ```
 
