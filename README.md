@@ -195,6 +195,17 @@ def audio_response(voice_db):
         audio_speak('starting monitoring system')
         os.startfile(system_path)
     
+     elif audio_exists(['Nova show internet speed']):
+        speed_test = speedtest.Speedtest()
+        dowload = round(speed_test.download(), 2)
+        upload = round(speed_test.upload(), 2)
+        audio_speak(f'The internet have {dowload} bit per second downloading speed and {upload} bit per second uploading speed')
+
+    elif audio_exists(['Nova show power battery']):
+        power_battery = psutil.sensors_battery()
+        battery_percentage = power_battery.percent
+        audio_speak(f'The system have {battery_percentage} percent battery')
+    
     elif audio_exists(['Nova send email for']):
         try:
             audio_speak("What should I say? Sir")
