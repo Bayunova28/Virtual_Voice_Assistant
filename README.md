@@ -59,6 +59,9 @@ pip install pyttsx3
 pip install json
 pip install requests
 pip install smtplib
+pip install psutil
+pip install speedtest-cli
+pip install pyautogui
 ```
 
 ## Setting up response of person and assistant
@@ -240,6 +243,15 @@ def audio_response(voice_db):
         spotify = "C:\\Users\\bayu\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Spotify.lnk"
         audio_speak('starting spotify app')
         os.startfile(spotify)
+        
+    elif audio_exists(['Nova volume up']):
+        pyautogui.press('volumeup')
+
+    elif audio_exists(['Nova volume down']):
+        pyautogui.press('volumedown')
+
+    elif audio_exists(['Nova mute']):
+        pyautogui.press('volumemute') 
 
     elif audio_exists(['Nova who is']):
         person = voice_db.split('for')[-1]
