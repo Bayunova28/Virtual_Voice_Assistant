@@ -48,19 +48,16 @@ recognition = sr.Recognizer()
 #define function for listen audio to convert text
 def audio_record(ask = False):
     with sr.Microphone() as source:
-        if ask:
-            audio_speak(ask)
-
+        print('Listening...')
         audio_listen = recognition.listen(source, 5, 5)
         voice_db = ''
 
         try:
             voice_db = recognition.recognize_google(audio_listen)
-
         except sr.UnknownValueError:
-            audio_speak('I am sorry Sir, I did not understand what you said. Can you please repeat again!')
+            print('I am sorry Sir, I did not understand what you said. Can you please repeat again!')
         except sr.RequestError:
-            audio_speak('I am sorry Sir, my server is going down')
+            print('I am sorry Sir, my server is going down')
         print(voice_db)
         return voice_db
 
