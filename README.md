@@ -1,13 +1,13 @@
 # Virtual Voice Assistant (NOVA)
-<img src="https://github.com/Bayunova28/Navillera/blob/master/Benefits-of-Having-a-Virtual-Assistant.jpg" width="1000" height="450">
+<img src="https://github.com/Bayunova28/Navillera/blob/master/Benefits-of-Having-a-Virtual-Assistant.jpg" width="1100" height="450">
 
-Virtual assistants are intelligent software agents that their performance is attributed to voice command. Some virtual assistants use synthesized voices to interpret the voice of 
+<p align="justify">Virtual assistants are intelligent software agents that their performance is attributed to voice command. Some virtual assistants use synthesized voices to interpret the voice of 
 human and response to the voice. The mundane activities and tasks perform by human waste time and energy that would have been expended on something meaningful. This is common in 
 routine scenario that calls for immediate response as found in some of our everyday tasks. The technology behind virtual assistants allows users to: ask the virtual assistants 
 questions, control home automation devices, play media playback through voice and manage other basic tasks such as email, to-do lists, and calendars. For example, virtual 
 assistants help in the office activities in the sense that some hundreds of e-mail messages that need to be answered which could not be humanly attended to can be answered through
 the hiring of virtual assistants. Any business owner can get the stress from their daily activities. There are many administrative tasks that could be solved during the day to 
-free up time and relieve stress, an assistant is needed who will help in a difficult situation.
+free up time and relieve stress, an assistant is needed who will help in a difficult situation.<p>
 
 ## Weather Mapping API
 This project using [weather mapping API](https://openweathermap.org/api). Before you build this program, you must [register account](https://home.openweathermap.org/users/sign_in) for got the API. After that, you can choose these API :
