@@ -194,7 +194,7 @@ def audio_response(voice_db):
         audio_speak('Here is the location ' + location)
     
     elif audio_exists(['Nova show my system']):
-        system_path = "C:\Program Files (x86)\MSI\Dragon Center\Dragon Center.exe"
+        system_path = "YOUR LINK SYSTEM PATH"
         audio_speak('starting monitoring system')
         os.startfile(system_path)
     
@@ -221,26 +221,26 @@ def audio_response(voice_db):
             audio_speak('Sorry your friend willi bayu. I am not able to send this email') 
     
     elif audio_exists(['Nova play music']):
-        music_dir = "C:\\Users\\bayu\\Music\\music"
+        music_dir = "YOUR LINK PATH MUSIC"
         songs = os.listdir(music_dir)
         print(songs)    
         audio_speak('Yes Sir! please wait')
         os.startfile(os.path.join(music_dir, songs[0]))
         
     elif audio_exists(['Nova play movie']):
-        movie_dir = "C:\\Users\\bayu\\Videos\\Captures\\movie"
+        movie_dir = "YOUR LINK PATH VIDEO"
         movies = os.listdir(movie_dir)
         print(movies)
         audio_speak('Yes Sir! please wait')
         os.startfile(os.path.join(movie_dir, movies[0]))
 
     elif audio_exists(['Nova open Discord']):
-        discord = "C:\\Users\\bayu\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Discord Inc\\Discord.lnk"
+        discord = "YOUR LINK PATH DISCORD"
         audio_speak('starting discord app')
         os.startfile(discord)
 
     elif audio_exists(['Nova open Spotify']):
-        spotify = "C:\\Users\\bayu\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Spotify.lnk"
+        spotify = "YOUR LINK PATH SPOTIFY"
         audio_speak('starting spotify app')
         os.startfile(spotify)
         
